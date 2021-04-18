@@ -1,0 +1,44 @@
+<!-- table product list -->
+<div class="container">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <h2>Product List</h2>
+      <!-- to create                    -->
+      <button [routerLink]="['product/' + 0]" class="btn btn-primary btn-block my-3">
+        <i class="fa fa-plus"></i>
+      </button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody> <!-- table                            -->
+          <tr *ngFor="let product of productList$ | async">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.category }}</td>
+            <td>
+              <div class="btn-group">
+                <!-- editor update -->
+                <button [routerLink]="['product/' + product.id]" class="btn btn-info">
+                  <i class="fa fa-pencil"></i>
+                </button>
+                <!-- delete -->
+                        <!-- delete click      -->
+                <button (click)="onDelete(product)" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
